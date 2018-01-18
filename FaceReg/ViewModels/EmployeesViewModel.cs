@@ -139,7 +139,7 @@ namespace FaceReg.ViewModels
                 //var http = new System.Net.Http.HttpClient();
                 //var pho = await http.GetStreamAsync("http://bosxixi.me/1.jpg");
                 // Upload to cognitive services
-                using (var stream = pho)
+                using (var stream = photo.GetStream())
                 {
                     var faceServiceClient = new FaceServiceClient("f989b4fe48244394a570dfa1ac336f9e");
 
