@@ -7,7 +7,23 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Button Command="{Binding FindSimilarFaceCommand}" Text="Identify"></Button>
+            <Grid Margin="0,50,0,0">
+                <Grid.ColumnDefinitions>
+                         <ColumnDefinition></ColumnDefinition>
+                           <ColumnDefinition></ColumnDefinition>
+                      <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Command="{Binding NewCommand}" Text="New Employee"></Button>
+                <ActivityIndicator Grid.Column="1" IsRunning="{Binding IsBusy}"></ActivityIndicator>
+                <Button Grid.Column="2" Command="{Binding FindSimilarFaceCommand}" Text="Identify"></Button>
+            </Grid>
+            <StackLayout IsVisible="{Binding NewStackVisible, Mode=TwoWay}">
+                <Label Text="Employee Name:"></Label>
+                <Entry Text="{Binding NewName, Mode=TwoWay}"></Entry>
+                <Label Text="Employee Photo Url:"></Label>
+                <Entry Text="{Binding NewUrl, Mode=TwoWay}"></Entry>
+                <Button Command="{Binding AddCommand}" Text="Add"></Button>
+            </StackLayout>
             <ListView ItemsSource="{Binding Employees}" 
                     HasUnevenRows="true"
                     SeparatorVisibility="None">
